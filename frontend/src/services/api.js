@@ -162,7 +162,7 @@ export const getReviews = async () => {
  * @returns {Promise}
  */
 export const createReview = async (data) => {
-  const response = await api.post("/reviews", data);
+  const response = await api.post("/api/reviews", data);
   return response.data;
 };
 

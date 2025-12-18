@@ -1,0 +1,184 @@
+nav{
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100vw;
+    padding: 2vh 0;
+    z-index: 999;
+    color: #fff;
+}
+body{
+    padding-top: 0;
+}
+.nav-wrapper{
+    width: 95%;
+    margin: 0 auto;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+.logo span{
+    text-transform: uppercase;
+    font-weight: 600;
+    font-size: clamp(1.2rem, 2vw, 10rem);
+    color: rgb(131, 31, 189);
+}
+.nav-items{
+    display: flex;
+    gap: clamp(2rem, 2.5vw, 10rem);
+    font-size: clamp(1rem, 1.2vw, 10rem);
+    text-transform: uppercase;
+    font-weight: 300;
+    align-items: center;
+}
+
+/* Active route highlighting */
+.nav-link.active span {
+    color: #ea00ff;
+    font-weight: 500;
+}
+.menu-btn{
+    display: none;
+}
+.menu-sm{
+    display: none;
+    text-decoration: none;
+}
+
+@media screen and (max-width: 950px) {
+    /* Hide desktop nav links on mobile */
+    .nav-items .nav-link {
+        display: none;
+    }
+    
+    .nav-items p{
+        display: none;
+    }
+    
+    /* Show hamburger button on mobile */
+    .menu-btn{
+        display: inline-block;
+        font-size: clamp(1.4rem, 2vw, 10rem);
+        cursor: pointer;
+        background: transparent;
+        border: none;
+        color: #ea00ff;
+        padding: 0;
+        transition: transform 0.2s ease, color 0.2s ease;
+    }
+    .menu-btn:hover {
+        transform: scale(1.1);
+        color: #470068ff;
+    }
+    .menu-btn:focus {
+        outline: 2px solid #470068ff;
+        outline-offset: 2px;
+        border-radius: 4px;
+    }
+    
+    /* Backdrop overlay for mobile menu */
+    .menu-backdrop {
+        position: fixed;
+        top: 0;
+        left: 0;
+        width: 100vw;
+        height: 100vh;
+        background: rgba(0, 0, 0, 0.5);
+        z-index: 9998;
+    }
+    .menu-sm{
+        display: flex;
+        flex-direction: column;
+        align-items: flex-start;
+        justify-content: center;
+        position: fixed;
+        top: 0;
+        left: 0;
+        width: 100vw;
+        height: 100vh;
+        background: #1A1919;
+        z-index: 9999;
+        color: #fff;
+        padding: 0;
+        overflow: hidden;
+    }
+    .menu-sm-items{
+        margin-left: clamp(3rem, 4vw, 10rem);
+        display: flex;
+        flex-direction: column;
+        gap: 2vh;
+    }
+    .menu-sm-items a {
+        display: block;
+    }
+    .menu-sm-items span{
+        font-size: clamp(2rem, 3vw, 10rem);
+        font-weight: 300;
+        text-transform: uppercase;
+        display: block;
+        transition: color 0.2s ease;
+    }
+    .menu-sm-items a:hover span {
+        color: #ea00ff;
+    }
+    
+    /* Active route highlighting in mobile menu */
+    .mobile-link.active span {
+        color: #ea00ff;
+        font-weight: 500;
+    }
+    .close-btn{
+        cursor: pointer;
+        position: absolute;
+        top: 2vh;
+        right: 3vw;
+        color: #f4e0e0;
+        font-size: clamp(1.4rem, 2vw, 10rem);
+        background: transparent;
+        border: none;
+        padding: 8px;
+        transition: transform 0.2s ease, color 0.2s ease;
+        z-index: 10000;
+    }
+    .close-btn:hover {
+        transform: rotate(90deg);
+        color: #ea00ff;
+    }
+    .close-btn:focus {
+        outline: 2px solid #ea00ff;
+        outline-offset: 2px;
+        border-radius: 4px;
+    }
+}
+
+nav {
+  position: fixed;     
+  top: 0;
+  left: 0;
+  width: 100%;
+  z-index: 1000;       
+  
+  
+  background-color: transparent;   
+  backdrop-filter: blur(10px);    
+  -webkit-backdrop-filter: blur(10px);
+  
+  box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+  transition: top 0.5s ease, background-color 0.3s ease;
+}
+
+
+body {
+  padding-top: 80px; 
+}
+/* Nav links color */
+.nav-items a, .menu-sm-items a {
+  color: rgba(0, 0, 0, 0.9);
+  transition: color 0.3s ease;
+   text-decoration: none;
+}
+
+/* Optional: hover effect on nav links */
+.nav-items a:hover, .menu-sm-items a:hover {
+  color: #ea00ff; /* Accent color when hovered */
+}

@@ -1,5 +1,5 @@
-import express from "express";
 import cors from "cors";
+import express from "express";
 import path from "path";
 import { fileURLToPath } from "url";
 import galleryRoutes from "./routes/galleryRoutes.js";
@@ -12,7 +12,7 @@ const app = express();
 
 // Strict CORS configuration for production + local dev
 const allowedOrigins = [
-  "https://diya-interior-494y.vercel.app", // production frontend
+  "diyamodulardesign.vercel.app", // production frontend
   "http://localhost:5173", // local Vite dev
   process.env.CLIENT_ORIGIN || null, // optional override from env
 ].filter(Boolean);

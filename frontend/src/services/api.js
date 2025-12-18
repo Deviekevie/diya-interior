@@ -2,11 +2,20 @@
 import axios from "axios";
 
 // Centralized API base URL
-// Prefer VITE_API_BASE_URL, fall back to VITE_API_URL, then same-origin /api
+// Production: MUST be set via VITE_API_URL (e.g. https://your-backend.vercel.app/api)
+// Local dev: Falls back to http://localhost:5000/api if VITE_API_URL not set
 const API_BASE_URL =
-  import.meta.env.VITE_API_BASE_URL ||
   import.meta.env.VITE_API_URL ||
-  "/api";
+  (import.meta.env.DEV ? "http://localhost:5000/api" : null);
+
+if (!API_BASE_URL) {
+  // Throw clear error in production if VITE_API_URL is missing
+  const errorMsg =
+    "VITE_API_URL is not defined. Please set it in Vercel environment variables to your backend base URL, e.g. https://diya-interior-8rbh.vercel.app/api";
+  // eslint-disable-next-line no-console
+  console.error(errorMsg);
+  throw new Error(errorMsg);
+}
 
 // Create axios instance with default config
 const api = axios.create({

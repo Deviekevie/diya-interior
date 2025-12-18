@@ -42,7 +42,9 @@ app.use((req, res, next) => {
   return next();
 });
 
-app.use(express.json());
+// Body parsing middleware
+app.use(express.json({ limit: "10mb" }));
+app.use(express.urlencoded({ extended: true, limit: "10mb" }));
 
 const __filename = fileURLToPath(import.meta.url);
 const __dirname = path.dirname(__filename);

@@ -13,10 +13,11 @@ const app = express();
 
 // Strict CORS configuration for production + local dev
 const allowedOrigins = [
-  "diyamodulardesign.vercel.app", // production frontend
-  "http://localhost:5173", // local Vite dev
-  process.env.CLIENT_ORIGIN || null, // optional override from env
+  "https://diyamodulardesign.vercel.app", // ✅ include protocol
+  "http://localhost:5173",
+  process.env.CLIENT_ORIGIN,
 ].filter(Boolean);
+
 
 const corsOptions = {
   origin(origin, callback) {

@@ -1,6 +1,6 @@
 import express from "express";
 import Review from "../models/Review.js"; // <-- ADD THIS
-import { createReview, getReviews } from "../controllers/reviewController.js";
+import { createReview } from "../controllers/reviewController.js";
 
 const router = express.Router();
 

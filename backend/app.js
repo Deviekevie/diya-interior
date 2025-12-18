@@ -34,7 +34,16 @@ const corsOptions = {
   credentials: true,
 };
 
-app.use(cors(corsOptions));
+app.use(cors({
+  origin: (origin, callback) => {
+    if (!origin) return callback(null, true); // server-to-server requests
+    if (allowedOrigins.includes(origin)) return callback(null, true);
+    return callback(new Error("Not allowed by CORS"));
+  },
+  methods: ["GET", "POST", "PUT", "DELETE", "OPTIONS"],
+  allowedHeaders: ["Content-Type", "Authorization"],
+  credentials: true
+}));
 
 // Generic preflight handler (no route pattern to avoid path-to-regexp issues)
 app.use((req, res, next) => {

@@ -24,7 +24,7 @@ const Motto = () => {
             viewport={{ once: true }}
             className='moto-img'
           >
-            <img src="/Images/About/motto-img.jpg" alt="Motto" />
+           
           </motion.div>
 
           <motion.h1

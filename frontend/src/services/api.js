@@ -152,7 +152,7 @@ export const submitContact = async (data) => {
  * @returns {Promise}
  */
 export const getReviews = async () => {
-  const response = await api.get("/api/reviews");
+  const response = await api.get("/reviews");
   return response.data;
 };
 
@@ -162,7 +162,7 @@ export const getReviews = async () => {
  * @returns {Promise}
  */
 export const createReview = async (data) => {
-  const response = await api.post("/api/reviews", data);
+  const response = await api.post("/reviews", data);
   return response.data;
 };
 

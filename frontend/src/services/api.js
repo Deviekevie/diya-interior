@@ -1,9 +1,12 @@
 // frontend/src/services/api.js
 import axios from "axios";
 
-// Base API URL - use environment variable or default to localhost
+// Centralized API base URL
+// Prefer VITE_API_BASE_URL, fall back to VITE_API_URL, then same-origin /api
 const API_BASE_URL =
-  import.meta.env.VITE_API_URL || "http://localhost:5000/api";
+  import.meta.env.VITE_API_BASE_URL ||
+  import.meta.env.VITE_API_URL ||
+  "/api";
 
 // Create axios instance with default config
 const api = axios.create({
@@ -74,7 +77,7 @@ export const getAdminInfo = async () => {
  * @returns {Promise}
  */
 export const getAllImages = async (params = {}) => {
-  const response = await api.get(`${import.meta.env.VITE_API_BASE_URL},/gallery`, { params });
+  const response = await api.get("/gallery", { params });
   return response.data;
 };
 
@@ -130,6 +133,27 @@ export const deleteImage = async (imageId) => {
  */
 export const submitContact = async (data) => {
   const response = await api.post("/contact", data);
+  return response.data;
+};
+
+// ==================== REVIEWS API ====================
+
+/**
+ * Fetch all reviews
+ * @returns {Promise}
+ */
+export const getReviews = async () => {
+  const response = await api.get("/reviews");
+  return response.data;
+};
+
+/**
+ * Create a new review
+ * @param {{name: string, rating: number, message: string}} data
+ * @returns {Promise}
+ */
+export const createReview = async (data) => {
+  const response = await api.post("/reviews", data);
   return response.data;
 };
 

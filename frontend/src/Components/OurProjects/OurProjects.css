@@ -2,7 +2,8 @@
 .our-projects-container{
     width: 100%;
     height: 100%;
-    margin: 10rem;
+    max-width: 1200px;
+    margin: 8rem auto 4rem;
 
     display: flex;
     align-items: center;
@@ -38,7 +39,6 @@
     text-transform: uppercase;
 }
 .our-projects-img{
-    
     float: right;
     margin-left: 5rem;
     height: 90%;
@@ -61,13 +61,27 @@
         flex-direction: column;
         align-items: center;
         justify-content: center;
+        margin: 5rem auto 3rem;
+        padding: 0 1.5rem;
     }
     .our-projects-content{
         width: 90%;
     }
     .our-projects-img{
-        width: 80%;
-        height: 50%;
+        width: 100%;
+        height: auto;
         overflow-x: hidden;
+    }
+}
+@media screen and (max-width: 600px) {
+    .our-projects-container{
+        margin: 4rem auto 2rem;
+        padding: 0 1rem;
+    }
+    .our-projects-content{
+        width: 100%;
+    }
+    .our-projects-img{
+        margin-left: 0;
     }
 }

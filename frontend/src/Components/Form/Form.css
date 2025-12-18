@@ -1,7 +1,7 @@
 .contact-page-container{
     width: 100%;
-    margin: auto;
-    padding: 12vh 0;
+    margin: 0 auto;
+    padding: 12vh 1.5rem;
     background-color: #1A1818;
     color: white;
 }
@@ -15,9 +15,8 @@
     display: flex;
     align-items: center;
     justify-content: center;
-    margin-left: -5rem;
     padding: 5vh 0;
-    width: auto;
+    width: 100%;
     height: auto;
 }
 .name{
@@ -40,7 +39,7 @@ label, .form-element input, .form-element textarea{
     outline: none;
     border: none;
     border-bottom: 1px solid #700576;
-    width: 140%;
+    width: 100%;
     padding: .2rem 0.5rem;
     background-color: transparent;
     color: white;
@@ -56,8 +55,21 @@ label{
     margin-right: .4rem;
 }
 
-@media screen and (max-width: 500px) {
-    .form-element input, .form-element textarea{
-        width: 120%;
-    } 
+@media screen and (max-width: 768px) {
+    .contact-page-container{
+        padding: 10vh 1.25rem;
+    }
+    .form-container{
+        padding: 4vh 0;
+    }
+}
+
+@media screen and (max-width: 480px) {
+    .contact-page-container{
+        padding: 8vh 1rem;
+    }
+    .form-element input,
+    .form-element textarea{
+        width: 100%;
+    }
 }

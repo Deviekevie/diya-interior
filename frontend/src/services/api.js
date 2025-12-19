@@ -149,11 +149,13 @@ export const submitContact = async (data) => {
 
 /**
  * Fetch all reviews
- * @returns {Promise}
+ * @returns {Promise<Array>} Array of review objects
  */
 export const getReviews = async () => {
   const response = await api.get("/reviews");
-  return response.data;
+  // Backend returns { success: true, reviews: [...] }
+  // Extract and return the reviews array with safe fallback
+  return Array.isArray(response.data?.reviews) ? response.data.reviews : [];
 };
 
 /**

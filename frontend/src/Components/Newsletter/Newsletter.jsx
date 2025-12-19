@@ -43,9 +43,9 @@ const Newsletter = () => {
       try {
         setLoading(true);
         setError('');
-        const res = await getReviews();
-        const apiReviews = Array.isArray(res.reviews) ? res.reviews : [];
-        setReviews(apiReviews);
+        // getReviews() now returns the reviews array directly
+        const apiReviews = await getReviews();
+        setReviews(Array.isArray(apiReviews) ? apiReviews : []);
       } catch (err) {
         console.error('Failed to load reviews:', err);
         setError('Unable to load recent reviews right now.');

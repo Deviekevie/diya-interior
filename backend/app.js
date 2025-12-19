@@ -53,14 +53,15 @@ const __dirname = path.dirname(__filename);
 app.use("/uploads", express.static(path.join(__dirname, "uploads")));
 app.use("/uploads", express.static(path.join(process.cwd(), "uploads")));
 
-// API routes
+// Reviews API - mounted at /reviews (frontend expects this exact path)
+app.use("/reviews", reviewRoutes);
+
+// Other API routes
 app.use("/api/gallery", galleryRoutes);
 app.use("/api/contact", contactRoutes);
 app.use("/api/admin", adminRoutes);
 app.use("/api/admin/gallery", adminGalleryRoutes);
 app.use("/api/reviews", reviewRoutes);
-// Mount reviews at /reviews for frontend compatibility (Render production)
-app.use("/reviews", reviewRoutes);
 
 export default app;
 

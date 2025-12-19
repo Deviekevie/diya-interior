@@ -1,4 +1,3 @@
-
 import express from "express";
 import cors from "cors";
 import path from "path";
@@ -13,11 +12,10 @@ const app = express();
 
 // Strict CORS configuration for production + local dev
 const allowedOrigins = [
-  "https://diyamodulardesign.vercel.app", // ✅ include protocol
-  "http://localhost:5173",
-  process.env.CLIENT_ORIGIN,
+  "https://diya-interior-494y.vercel.app", // production frontend
+  "http://localhost:5173", // local Vite dev
+  process.env.CLIENT_ORIGIN || null, // optional override from env
 ].filter(Boolean);
-
 
 const corsOptions = {
   origin(origin, callback) {
@@ -34,16 +32,7 @@ const corsOptions = {
   credentials: true,
 };
 
-app.use(cors({
-  origin: (origin, callback) => {
-    if (!origin) return callback(null, true); // server-to-server requests
-    if (allowedOrigins.includes(origin)) return callback(null, true);
-    return callback(new Error("Not allowed by CORS"));
-  },
-  methods: ["GET", "POST", "PUT", "DELETE", "OPTIONS"],
-  allowedHeaders: ["Content-Type", "Authorization"],
-  credentials: true
-}));
+app.use(cors(corsOptions));
 
 // Generic preflight handler (no route pattern to avoid path-to-regexp issues)
 app.use((req, res, next) => {
@@ -70,6 +59,8 @@ app.use("/api/contact", contactRoutes);
 app.use("/api/admin", adminRoutes);
 app.use("/api/admin/gallery", adminGalleryRoutes);
 app.use("/api/reviews", reviewRoutes);
+// Mount reviews at /reviews for frontend compatibility (Render production)
+app.use("/reviews", reviewRoutes);
 
 export default app;
 

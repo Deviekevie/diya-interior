@@ -10,21 +10,32 @@ import reviewRoutes from "./routes/reviewRoutes.js";
 
 const app = express();
 
-// Strict CORS configuration for production + local dev
+// CORS configuration for production + local dev
+// Allow frontend origin from environment variable or common Vercel patterns
 const allowedOrigins = [
   "https://diya-interior-494y.vercel.app", // production frontend
   "http://localhost:5173", // local Vite dev
-  process.env.CLIENT_ORIGIN || null, // optional override from env
+  process.env.CLIENT_ORIGIN || null, // explicit frontend URL from env
+  process.env.FRONTEND_URL || null, // alternative env var name
 ].filter(Boolean);
 
 const corsOptions = {
   origin(origin, callback) {
-    // Allow server-to-server or tools (no Origin header)
+    // Allow requests with no origin (server-to-server, Postman, etc.)
     if (!origin) return callback(null, true);
 
+    // Check if origin is in allowed list
     if (allowedOrigins.includes(origin)) {
       return callback(null, true);
     }
+
+    // Allow Vercel preview deployments (pattern: *.vercel.app)
+    if (origin.includes(".vercel.app")) {
+      return callback(null, true);
+    }
+
+    // Log blocked origin for debugging
+    console.warn(`CORS blocked origin: ${origin}`);
     return callback(new Error("Not allowed by CORS"));
   },
   methods: ["GET", "POST", "PUT", "DELETE", "OPTIONS"],

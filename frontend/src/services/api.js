@@ -1,23 +1,27 @@
-// frontend/src/services/api.js
+
 import axios from "axios";
 
-// Centralized API base URL
-// Production: MUST be set via VITE_API_URL (e.g. https://your-backend.vercel.app/api)
-// Local dev: Falls back to http://localhost:5000/api if VITE_API_URL not set
-const API_BASE_URL =
-  import.meta.env.VITE_API_URL ||
+// API base URL configuration
+// Production: Use VITE_API_BASE_URL (can be with or without /api suffix)
+// Local dev: Fallback to localhost:5000/api
+let API_BASE_URL =
+  import.meta.env.VITE_API_BASE_URL ||
   (import.meta.env.DEV ? "http://localhost:5000/api" : null);
 
 if (!API_BASE_URL) {
-  // Throw clear error in production if VITE_API_URL is missing
   const errorMsg =
-    "VITE_API_URL is not defined. Please set it in Vercel environment variables to your backend base URL, e.g. https://diya-interior-8rbh.vercel.app/api";
-  // eslint-disable-next-line no-console
+    "VITE_API_BASE_URL is not defined. Please set it in Vercel environment variables to your backend base URL, e.g. https://diya-interior.onrender.com/api";
   console.error(errorMsg);
   throw new Error(errorMsg);
 }
 
-// Create axios instance with default config
+// Ensure baseURL ends with /api for consistent routing
+// If user provides https://diya-interior.onrender.com, append /api
+// If user provides https://diya-interior.onrender.com/api, keep as is
+if (!API_BASE_URL.endsWith("/api")) {
+  API_BASE_URL = API_BASE_URL.replace(/\/$/, "") + "/api";
+}
+
 const api = axios.create({
   baseURL: API_BASE_URL,
   headers: {
@@ -25,7 +29,6 @@ const api = axios.create({
   },
 });
 
-// Request interceptor to add auth token
 api.interceptors.request.use(
   (config) => {
     const token = localStorage.getItem("token");
@@ -39,15 +42,13 @@ api.interceptors.request.use(
   }
 );
 
-// Response interceptor for error handling
+
 api.interceptors.response.use(
   (response) => response,
   (error) => {
-    // Handle 401 Unauthorized - token expired or invalid
     if (error.response?.status === 401) {
       localStorage.removeItem("token");
       localStorage.removeItem("isAdmin");
-      // Redirect to login if not already there
       if (window.location.pathname !== "/admin-login") {
         window.location.href = "/admin-login";
       }

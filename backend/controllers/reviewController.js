@@ -46,6 +46,25 @@ export const getReviews = async (_req, res) => {
   }
 };
 
+// DELETE /api/reviews/:id - delete a review (admin only)
+export const deleteReview = async (req, res) => {
+  try {
+    const { id } = req.params;
+
+    const review = await Review.findById(id);
+    if (!review) {
+      return res.status(404).json({ success: false, message: "Review not found." });
+    }
+
+    await Review.findByIdAndDelete(id);
+
+    return res.status(200).json({ success: true, message: "Review deleted successfully." });
+  } catch (error) {
+    console.error("Delete review error:", error);
+    return res.status(500).json({ success: false, message: "Failed to delete review." });
+  }
+};
+
 
 
 

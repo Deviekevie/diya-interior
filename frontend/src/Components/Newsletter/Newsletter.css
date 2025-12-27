@@ -9,9 +9,25 @@
     padding: 4rem 1rem;
 }
 
+@media screen and (max-width: 480px) {
+    .review-wrapper {
+        width: 95%;
+        padding: 2.5rem 0.75rem;
+    }
+}
+
 .review-wrapper h1 {
-    font-size: clamp(2rem, 4vw, 4rem);
+    font-size: clamp(1.75rem, 4vw, 4rem);
     font-weight: 700;
+    line-height: 1.2;
+    margin-bottom: 1rem;
+}
+
+@media screen and (max-width: 480px) {
+    .review-wrapper h1 {
+        font-size: clamp(1.5rem, 5vw, 2.5rem);
+        margin-bottom: 0.75rem;
+    }
 }
 
 .review-wrapper p {
@@ -36,6 +52,28 @@
     transition: 0.3s ease;
 }
 
+@media screen and (max-width: 480px) {
+    .review-card {
+        padding: 1.25rem;
+        border-radius: 12px;
+    }
+    
+    .review-card h3 {
+        font-size: 1.1rem;
+        margin-bottom: 0.75rem;
+    }
+    
+    .review-card .review-text {
+        font-size: 0.95rem;
+        line-height: 1.5;
+        margin-bottom: 0.75rem;
+    }
+    
+    .review-card span {
+        font-size: 0.9rem;
+    }
+}
+
 .review-card:hover {
     transform: translateY(-5px);
     box-shadow: 0px 15px 35px rgba(201, 3, 251, 0.189);
@@ -55,6 +93,15 @@
     border-radius: 16px;
     background: #ffffff;
     box-shadow: 0 10px 30px rgba(0,0,0,0.08);
+}
+
+@media screen and (max-width: 480px) {
+    .review-form {
+        margin-top: 1.5rem;
+        margin-bottom: 1rem;
+        padding: 1rem;
+        border-radius: 12px;
+    }
 }
 
 .review-form-row {
@@ -84,6 +131,17 @@
     border: 1px solid #e5e7eb;
     font-size: 0.9rem;
     outline: none;
+    min-height: 44px; /* Touch-friendly minimum height */
+}
+
+@media screen and (max-width: 480px) {
+    .review-form-field input,
+    .review-form-field select,
+    .review-form-field textarea {
+        padding: 0.75rem;
+        font-size: 1rem; /* Prevent zoom on iOS */
+        min-height: 48px;
+    }
 }
 
 .review-form-field textarea {
@@ -142,6 +200,7 @@
 @media screen and (min-width: 640px) {
     .review-cards {
         grid-template-columns: repeat(2, 1fr);
+        gap: 1.5rem;
     }
 
     .review-form-row {
@@ -150,6 +209,27 @@
 
     .review-form-field {
         flex: 1;
+    }
+}
+
+@media screen and (max-width: 480px) {
+    .review-cards {
+        gap: 1.25rem;
+    }
+    
+    .review-form-row {
+        gap: 0.75rem;
+    }
+    
+    .review-form-field {
+        margin-bottom: 0.75rem;
+    }
+    
+    button[type="submit"] {
+        width: 100%;
+        padding: 0.875rem 1.5rem;
+        font-size: 1rem;
+        min-height: 48px;
     }
 }
 

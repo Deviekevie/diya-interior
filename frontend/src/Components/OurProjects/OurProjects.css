@@ -4,7 +4,6 @@
     height: 100%;
     max-width: 1200px;
     margin: 8rem auto 4rem;
-
     display: flex;
     align-items: center;
     flex-wrap: nowrap;
@@ -81,7 +80,30 @@
     .our-projects-content{
         width: 100%;
     }
+    .our-projects-content h1{
+        font-size: clamp(2rem, 5vw, 3rem);
+        line-height: 1.2;
+        margin-bottom: 1.5rem;
+    }
     .our-projects-img{
         margin-left: 0;
+        width: 100%;
+        float: none;
+    }
+    .our-projects-cta{
+        width: 100%;
+        padding: 0.875rem 1rem;
+        min-height: 48px;
+        font-size: 0.9rem;
+    }
+}
+
+@media screen and (max-width: 400px) {
+    .our-projects-container{
+        margin: 3rem auto 1.5rem;
+        padding: 0 0.75rem;
+    }
+    .our-projects-content h1{
+        font-size: clamp(1.75rem, 6vw, 2.5rem);
     }
 }

@@ -59,8 +59,14 @@ label{
     .contact-page-container{
         padding: 10vh 1.25rem;
     }
+    .contact-page-container h1 {
+        font-size: clamp(2rem, 5vw, 3rem);
+        margin-bottom: 1.5rem;
+    }
     .form-container{
         padding: 4vh 0;
+        width: 100%;
+        max-width: 100%;
     }
 }
 
@@ -68,8 +74,38 @@ label{
     .contact-page-container{
         padding: 8vh 1rem;
     }
+    .contact-page-container h1 {
+        font-size: clamp(1.75rem, 6vw, 2.5rem);
+        line-height: 1.2;
+        margin-bottom: 1.25rem;
+    }
+    .form-container{
+        padding: 3vh 0;
+    }
+    .form-element{
+        margin-bottom: 1.25rem;
+    }
     .form-element input,
     .form-element textarea{
         width: 100%;
+        padding: 0.75rem 0.5rem;
+        font-size: 1rem; /* Prevent zoom on iOS */
+        min-height: 48px; /* Touch-friendly */
+    }
+    .form-element textarea {
+        min-height: 120px;
+        padding: 0.75rem;
+    }
+    label {
+        font-size: 0.95rem;
+        margin-bottom: 0.5rem;
+        display: block;
+    }
+    button[type="submit"] {
+        width: 100%;
+        padding: 0.875rem 1.5rem;
+        font-size: 1rem;
+        min-height: 48px;
+        margin-top: 0.5rem;
     }
 }

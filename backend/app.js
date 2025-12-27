@@ -6,36 +6,24 @@ import galleryRoutes from "./routes/galleryRoutes.js";
 import contactRoutes from "./routes/contactRoutes.js";
 import adminRoutes from "./routes/adminRoutes.js";
 import adminGalleryRoutes from "./routes/adminGalleryRoutes.js";
-import reviewRoutes from "./routes/reviewRoutes.js";
 
 const app = express();
 
-// CORS configuration for production + local dev
-// Allow frontend origin from environment variable or common Vercel patterns
+// Strict CORS configuration for production + local dev
 const allowedOrigins = [
   "https://diya-interior-494y.vercel.app", // production frontend
   "http://localhost:5173", // local Vite dev
-  process.env.CLIENT_ORIGIN || null, // explicit frontend URL from env
-  process.env.FRONTEND_URL || null, // alternative env var name
+  process.env.CLIENT_ORIGIN || null, // optional override from env
 ].filter(Boolean);
 
 const corsOptions = {
   origin(origin, callback) {
-    // Allow requests with no origin (server-to-server, Postman, etc.)
+    // Allow server-to-server or tools (no Origin header)
     if (!origin) return callback(null, true);
 
-    // Check if origin is in allowed list
     if (allowedOrigins.includes(origin)) {
       return callback(null, true);
     }
-
-    // Allow Vercel preview deployments (pattern: *.vercel.app)
-    if (origin.includes(".vercel.app")) {
-      return callback(null, true);
-    }
-
-    // Log blocked origin for debugging
-    console.warn(`CORS blocked origin: ${origin}`);
     return callback(new Error("Not allowed by CORS"));
   },
   methods: ["GET", "POST", "PUT", "DELETE", "OPTIONS"],
@@ -53,9 +41,7 @@ app.use((req, res, next) => {
   return next();
 });
 
-// Body parsing middleware
-app.use(express.json({ limit: "10mb" }));
-app.use(express.urlencoded({ extended: true, limit: "10mb" }));
+app.use(express.json());
 
 const __filename = fileURLToPath(import.meta.url);
 const __dirname = path.dirname(__filename);
@@ -64,15 +50,11 @@ const __dirname = path.dirname(__filename);
 app.use("/uploads", express.static(path.join(__dirname, "uploads")));
 app.use("/uploads", express.static(path.join(process.cwd(), "uploads")));
 
-// Reviews API - mounted at /reviews (frontend expects this exact path)
-app.use("/reviews", reviewRoutes);
-
-// Other API routes
+// API routes
 app.use("/api/gallery", galleryRoutes);
 app.use("/api/contact", contactRoutes);
 app.use("/api/admin", adminRoutes);
 app.use("/api/admin/gallery", adminGalleryRoutes);
-app.use("/api/reviews", reviewRoutes);
 
 export default app;
 

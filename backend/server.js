@@ -2,8 +2,17 @@ import dotenv from "dotenv";
 import mongoose from "mongoose";
 import app from "./app.js";
 import reiewRoutes from "./routes/reviewRoutes.js";
+import cors from "cors";
 
-// Use review routes
+app.use(
+  cors({
+    origin: [
+      "https://diyamodularwebpage.vercel.app"
+    ],
+    methods: ["GET", "POST", "PUT", "DELETE"],
+    credentials: true,
+  })
+);
 app.use("/api/reviews", reiewRoutes);
 dotenv.config();
 

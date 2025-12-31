@@ -1,15 +1,15 @@
 import dotenv from "dotenv";
+dotenv.config();
 import mongoose from "mongoose";
 import app from "./app.js";
 import reiewRoutes from "./routes/reviewRoutes.js";
-import cors from "cors";
+
 
 app.use("/api/reviews", reiewRoutes);
-dotenv.config();
+
 
 const PORT = process.env.PORT || 5000;
 
-// Local/server hosting entry point
 mongoose
   .connect(process.env.MONGO_URI)
   .then(() => {

@@ -7,6 +7,8 @@ const router = express.Router();
 // Public routes
 router.post("/", createReview);
 router.get("/", getReviews);
+// Protected admin route
+router.delete("/:id", verifyAdmin, deleteReview);
 
 // Protected admin route
 router.delete("/:id", verifyAdmin, deleteReview);

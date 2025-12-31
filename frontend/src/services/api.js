@@ -169,6 +169,16 @@ export const createReview = async (data) => {
   return response.data;
 };
 
+/**
+ * Delete a review (admin only)
+ * @param {string} reviewId
+ * @returns {Promise}
+ */
+export const deleteReview = async (reviewId) => {
+  const response = await api.delete(`/reviews/${reviewId}`);
+  return response.data;
+};
+
 export default api;
 
 

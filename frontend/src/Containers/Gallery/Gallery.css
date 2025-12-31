@@ -48,6 +48,28 @@
   border-radius: 2%;
 }
 
+@media screen and (max-width: 768px) {
+  .gallery-container {
+    width: 98%;
+    padding-top: 15vh;
+    padding-bottom: 6vh;
+  }
+}
+
+@media screen and (max-width: 480px) {
+  .gallery-container {
+    width: 100%;
+    padding-top: 12vh;
+    padding-bottom: 4vh;
+  }
+  
+  .gallery-container h1 {
+    font-size: clamp(2rem, 6vw, 3rem);
+    margin-bottom: 3vh;
+    padding: 0 1rem;
+  }
+}
+
 .gallery-container h1 {
   font-size: clamp(4rem, 7vw, 10rem);
   font-weight: 400;
@@ -62,6 +84,22 @@
   margin: auto;
   padding: 40px 0;
   border-radius: 2%;
+}
+
+@media screen and (max-width: 480px) {
+  .gallery-images {
+    width: 95%;
+    gap: 12px;
+    padding: 20px 0;
+  }
+  
+  .hover-card {
+    min-height: 200px;
+  }
+  
+  .hover-card .hover-text {
+    font-size: 1.2rem;
+  }
 }
 
 .project-cta {

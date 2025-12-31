@@ -43,7 +43,7 @@
 .gallery-container {
   width: 95%;
   margin: auto;
-  padding-top: 20vh;
+  padding-top: 10vh;
   padding-bottom: 10vh;
   border-radius: 2%;
 }
@@ -51,7 +51,7 @@
 @media screen and (max-width: 768px) {
   .gallery-container {
     width: 98%;
-    padding-top: 15vh;
+    padding-top: 5vh;
     padding-bottom: 6vh;
   }
 }
@@ -59,7 +59,7 @@
 @media screen and (max-width: 480px) {
   .gallery-container {
     width: 100%;
-    padding-top: 12vh;
+    padding-top: 1vh;
     padding-bottom: 4vh;
   }
   
@@ -90,7 +90,7 @@
   .gallery-images {
     width: 95%;
     gap: 12px;
-    padding: 20px 0;
+    padding: 10px 0;
   }
   
   .hover-card {
@@ -162,5 +162,6 @@
 @media screen and (min-width: 640px) {
   .gallery-images {
     grid-template-columns: repeat(2, 1fr);
+    padding-top: 40px;
   }
 }

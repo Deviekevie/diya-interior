@@ -1,69 +1,167 @@
-*{
+/* =========================
+   GLOBAL RESET
+========================= */
+* {
   margin: 0;
   padding: 0;
   box-sizing: border-box;
-  transition: .4s ease-in-out;
 }
-body{
+
+/* =========================
+   BODY
+========================= */
+body {
   font-family: 'Inter', sans-serif;
   overflow-x: hidden;
-  padding-top: 75px;
+  padding-top: 64px;
+  background-color: #ffffff;
 }
-body::-webkit-scrollbar{
+
+body::-webkit-scrollbar {
   display: none;
 }
-img{
-  width: 100%;
-  height: auto;
-  object-fit: cover;
-}
-.yellow{
-  color: rgb(203, 146, 236);
-}
-.container{
-  width: 100%;
-  min-height: 100vh;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-}
-.gal{
-    display: flex;
-    gap: clamp(2rem, 2.5vw, 10rem);
-    font-size: clamp(1rem, 1.2vw, 10rem);
-    text-transform: uppercase;
-    font-weight: 300;
-    background-color: purple;
-    padding: 20px;
-    margin-right: 10px;
-    text-decoration: none;
-    width: fit-content;
 
-    }
-button{
-  outline: none;
+/* =========================
+   IMAGES
+========================= */
+img {
+  max-width: 100%;
+  height: auto;
+  display: block;
+}
+
+/* =========================
+   LINKS & BUTTONS
+========================= */
+a {
+  text-decoration: none;
+  color: inherit;
+}
+
+button {
   border: none;
-  padding: .5rem 2rem;
-  font-size: clamp(1rem, 1.2vw, 10rem);
+  outline: none;
+  cursor: pointer;
+  padding: 0.75rem 1.5rem;
+  font-size: 1rem;
   text-transform: uppercase;
   background-color: #7427a0ff;
-  cursor: pointer;
-  transition: background-color 0.2s ease, transform 0.1s ease;
+  color: #fff;
+  border-radius: 6px;
 }
 
 button:active {
-  transform: scale(0.98);
+  transform: scale(0.97);
 }
 
-@media screen and (max-width: 480px) {
-  button {
-    padding: 0.75rem 1.5rem;
-    font-size: 0.95rem;
-    min-height: 44px;
-    touch-action: manipulation;
+/* =========================
+   COMMON COLORS
+========================= */
+.yellow {
+  color: rgb(203, 146, 236);
+}
+
+/* =========================
+   LAYOUT SYSTEM (IMPORTANT)
+========================= */
+
+/* Section container */
+.container {
+  width: 100%;
+  padding: 24px 16px;
+}
+
+/* Content wrapper (professional centering) */
+.wrapper {
+  width: 100%;
+  max-width: 1200px;
+  margin: 0 auto;
+}
+
+/* Consistent spacing between sections */
+section {
+  margin-bottom: 32px;
+}
+
+/* =========================
+   GALLERY / NAV / ROW ITEMS
+========================= */
+.gal {
+  display: flex;
+  flex-direction: column;     /* MOBILE FIRST */
+  align-items: center;
+  justify-content: center;
+  gap: 16px;
+  background-color: purple;
+  padding: 16px;
+  border-radius: 8px;
+  width: 100%;
+  text-align: center;
+  font-size: 1rem;
+  font-weight: 300;
+  text-transform: uppercase;
+}
+
+/* =========================
+   TYPOGRAPHY (MOBILE FIRST)
+========================= */
+h1 {
+  font-size: 1.6rem;
+  text-align: center;
+}
+
+h2 {
+  font-size: 1.3rem;
+  text-align: center;
+}
+
+p {
+  font-size: 0.95rem;
+  line-height: 1.6;
+  text-align: center;
+}
+
+/* =========================
+   TABLET & DESKTOP
+========================= */
+@media (min-width: 768px) {
+
+  body {
+    padding-top: 75px;
+  }
+
+  section {
+    margin-bottom: 48px;
+  }
+
+  h1 {
+    font-size: 2.4rem;
+    text-align: left;
+  }
+
+  h2 {
+    font-size: 1.8rem;
+    text-align: left;
+  }
+
+  p {
+    font-size: 1rem;
+    text-align: left;
+  }
+
+  .gal {
+    flex-direction: row;
+    gap: 48px;
+    width: fit-content;
+    text-align: left;
   }
 }
-a{
-  text-decoration: underline;
-  color: black;
+
+/* =========================
+   LARGE DESKTOP
+========================= */
+@media (min-width: 1200px) {
+  .wrapper {
+    max-width: 1320px;
+  }
 }

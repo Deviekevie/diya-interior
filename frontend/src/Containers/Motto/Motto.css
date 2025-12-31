@@ -1,105 +1,121 @@
-.body{
-    overflow-x: hidden;
-}
-.motto-container{
-    width: 100%;
-    min-height: 80vh;
-    max-height: auto;
-    position: relative;
-}
-.motto-wrapper{
-    width: 95%;
-    margin: auto;
-    height: fit-content;
-    
-}
-.motto-bg{
-    position: absolute;
-    top: 0;
-    left: 0;
-    width: 100%;
-    margin: 0;
-    height: 50vh;
-    background-color: #1A1919;
-    z-index: -1;
-}
-.moto-text{
-    padding-top: 5vh;
-    position: relative;
-    z-index: 4;  
+
+.motto-container {
+  width: 100%;
+  overflow-x: hidden;
+  background-color: #1A1919;
 }
 
-.moto-text h1{
-    color: white;
-    font-weight: 300;
-    font-size: clamp(3rem, 5vw, 10rem);
-    z-index: 5;
+.motto-wrapper {
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 96px 16px 64px;
 }
-.moto-img{
-    position: absolute;
-    z-index: 3;
-    max-height: 10vh;
-    width: 50%;
-    margin: 10px;
-    top: 100%;
-    left: 0%;
-    right: auto;
-   
+
+.moto-text {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  text-align: center;
 }
-.about-description{
-    padding-top: 20vh;
-    margin-left: 20px;
-    margin-bottom: 0px;
+
+.moto-text h1 {
+  color: #ffffff;
+  font-weight: 300;
+  font-size: 2rem;
+  line-height: 1.3;
 }
-.about-wrapper{
-    width: 95%;
-    margin: auto;
-    display: flex;
+
+.about-description {
+  background-color: #ffffff;
+  padding: 64px 16px;
+}
+
+.about-wrapper {
+  max-width: 1200px;
+  margin: 0 auto;
+
+  display: flex;
+  flex-direction: column;   /* MOBILE FIRST */
+  align-items: center;
+  gap: 32px;
+}
+
+/* =========================
+   IMAGE (NO CUTTING)
+========================= */
+.about-img {
+  width: 100%;
+  max-width: 520px;
+  border-radius: 10px;
+  overflow: hidden;
+}
+
+.about-img img {
+  width: 100%;
+  height: auto;            /* IMPORTANT */
+  display: block;
+  max-height: 320px;   /* REDUCED image height */
+  object-fit: cover;
+  display: block;
+}
+
+/* =========================
+   TEXT
+========================= */
+.about-paragraph {
+  width: 100%;
+}
+
+.about-paragraph p {
+  font-size: 2rem;
+  line-height: 1.7;
+  font-weight: 300;
+  color: #1A1919;
+  text-align: center;
+}
+
+/* =========================
+   TABLET & DESKTOP
+========================= */
+@media (min-width: 768px) {
+
+  .moto-text {
+    align-items: flex-start;
+    text-align: left;
+  }
+
+  .moto-text h1 {
+    font-size: 3rem;
+  }
+
+  .about-wrapper {
+    flex-direction: row;   /* TWO COLUMNS */
     align-items: center;
-    padding: 7vh 0;
-    gap: 2rem;
-    margin-bottom: 0px;
-}
-.about-img{
-    min-width: 27%;
-    max-width: 40%;
-    height: auto;
-    overflow: hidden;
+    gap: 48px;
+  }
+
+  .about-img {
+    flex: 1;
+    max-width: 420px;
+    max-height: 20%;
+  }
+
+  .about-paragraph {
+    flex: 1;
+  }
+
+  .about-paragraph p {
+    font-size: 1.1rem;
+    text-align: left;
+    
+  }
 }
 
-.about-img img{
-    width: 100%;
-    height: auto;
-    max-height: 480px;
-    object-fit: cover;
-    display: block;
-    margin-top: 0px;
-}
-
-.about-paragraph p{
-    font-size: clamp(1.7rem, 2vw, 7rem);
-    font-weight: 300;
-}
-@media screen and (max-width: 900px) {
-    .about-wrapper{
-        flex-direction: column;
-        align-items: center;
-    }
-    .about-img{
-        width: 100%;
-        max-width: 600px;
-        height: auto;
-    }
-}
-
-@media screen and (max-width: 400px) {
-    .about-paragraph p{
-        font-size: 1rem;
-    }
-    .moto-img{
-        top: 100%;
-    }
-    .about-description{
-         padding-top: 10vh;
-    }
+/* =========================
+   LARGE DESKTOP
+========================= */
+@media (min-width: 1200px) {
+  .moto-text h1 {
+    font-size: 3.8rem;
+  }
 }

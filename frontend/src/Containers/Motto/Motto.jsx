@@ -55,7 +55,7 @@ const Motto = () => {
               whileInView={{ opacity: 1 }}
               transition={{ duration: 0.8, delay: 0.3 }}
               viewport={{ once: true }}
-            > <h4 className='moto-text'>"<span className='yellow'>Welcome to Diya Modular</span> where every space is thoughtfully designed to reflect your lifestyle, comfort, and individuality.”</h4>
+            > <h4 className='moto-text'><span className='yellow'>" Welcome to Diya Modular</span> where every space is thoughtfully designed to reflect your lifestyle, comfort, and individuality.”</h4>
               
               With over 10+ years of experience, we bring a skilled eye for details, 
               coupled with flawless execution, to ensure your home or commercial space 

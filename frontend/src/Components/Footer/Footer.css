@@ -1,49 +1,146 @@
-footer{
-    width: 100%;
-    height: auto;
-    background-color: #7427a0ff;
-    margin: 0;
-    padding: 1rem;
-    display: flex;
-    align-items: center;
-
+footer {
+  width: 100%;
+  background-color: #7427a0ff;
+  margin: 0;
+  padding: 2rem 1rem;
+  display: flex;
+  justify-content: center;
 }
+
+/* Links */
 .nav-link {
   text-decoration: none;
-  color: inherit;
+  color: #ffffff;
   margin: 0 12px;
   cursor: pointer;
+  transition: opacity 0.3s ease;
 }
 
-.footer-main{
-    width: 95%;
-    max-width: 1200px;
-    margin: 0 auto;
-    display: flex;
-    align-items: center;
-    margin-bottom: 1vh;
-    justify-content: space-between;
-}
-.footer-main h1{
-    font-size: clamp(2rem, 3.5vw, 10rem);
-    font-weight: 500;
-}
-.footer-nav{
-    display: flex;
-    gap: 4rem;
-}
-.footer-nav p{
-    font-weight: 500;
-    font-size: clamp(1.2rem, 1.2vw, 4rem);
-}
-.footer-wrapper p{
-    text-align: center;
-    font-size: clamp(.6rem, 1vw, 2rem);
+.nav-link:hover {
+  opacity: 0.75;
 }
 
+/* Main container */
+.footer-main {
+  width: 95%;
+  max-width: 1200px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 1.5rem;
+}
+
+/* Brand name */
+.footer-main h1 {
+  font-size: clamp(1.8rem, 3vw, 3rem);
+  font-weight: 600;
+  color: #ffffff;
+  letter-spacing: 1px;
+}
+
+/* Navigation */
+.footer-nav {
+  display: flex;
+  gap: 3rem;
+}
+
+.footer-nav p {
+  font-weight: 500;
+  font-size: clamp(1rem, 1.1vw, 1.4rem);
+}
+
+/* Text under footer (contact / location) */
+.footer-wrapper p {
+  color: #f2e9f7;
+  font-size: clamp(0.85rem, 0.9vw, 1rem);
+  line-height: 1.5;
+  margin: 0.3rem 0;
+}
+
+.footer-contact {
+  margin-top: 0.8rem;
+}
+
+.contact-item {
+  display: flex;
+  align-items: flex-start;
+  gap: 10px;
+  margin: 6px 0;
+}
+
+/* Icon base */
+.icon {
+  width: 20px;
+  height: 20px;
+  flex-shrink: 0;
+  margin-top: 2px;
+  background-repeat: no-repeat;
+  background-size: contain;
+  opacity: 0.95;
+}
+/* Email SVG */
+.email-icon {
+  background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' fill='none' viewBox='0 0 24 24' stroke='%23ffffff' stroke-width='1.5'%3E%3Cpath stroke-linecap='round' stroke-linejoin='round' d='M3 8l7.89 5.26a2 2 0 002.22 0L21 8M5 19h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z'/%3E%3C/svg%3E");
+}
+
+
+/* Phone SVG */
+.phone-icon {
+  background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' fill='none' viewBox='0 0 24 24' stroke='%23ffffff' stroke-width='1.5'%3E%3Cpath stroke-linecap='round' stroke-linejoin='round' d='M2.25 6.75c0 7.456 6.044 13.5 13.5 13.5.621 0 1.125-.504 1.125-1.125v-2.636a1.125 1.125 0 00-.975-1.117l-2.986-.497a1.125 1.125 0 00-1.09.417l-.97 1.293a10.522 10.522 0 01-4.516-4.516l1.293-.97a1.125 1.125 0 00.417-1.09l-.497-2.986A1.125 1.125 0 005.511 3.75H2.875A.625.625 0 002.25 4.375v2.375z'/%3E%3C/svg%3E");
+}
+
+/* Location SVG */
+.location-icon {
+  background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' fill='none' viewBox='0 0 24 24' stroke='%23ffffff' stroke-width='1.5'%3E%3Cpath stroke-linecap='round' stroke-linejoin='round' d='M12 21s6-5.686 6-10a6 6 0 10-12 0c0 4.314 6 10 6 10z'/%3E%3Ccircle cx='12' cy='11' r='2.5'/%3E%3C/svg%3E");
+}
+
+/* Links */
+.footer-contact a {
+  color: #f6eaff;
+  text-decoration: none;
+  font-weight: 500;
+}
+
+.footer-contact a:hover {
+  opacity: 0.85;
+}
+/* Mobile – professional alignment fix */
 @media screen and (max-width: 900px) {
-    .footer-main{
-        flex-direction: column;
-        gap: 1rem;
-    }
+
+  .footer-main {
+    flex-direction: column;
+    gap: 1.5rem;
+  }
+
+  .footer-nav {
+    gap: 1.2rem;
+    flex-wrap: wrap;
+    justify-content: center;
+  }
+
+  /* Contact block */
+  .footer-contact {
+    width: 100%;
+    max-width: 520px;
+    margin: 0 auto;
+  }
+
+  /* Force SAME alignment for all items */
+  .contact-item {
+    display: grid;
+    grid-template-columns: 22px 1fr; /* icon | text */
+    align-items: start;
+    column-gap: 12px;
+    margin: 8px 0;
+  }
+
+  .icon {
+    margin-top: 3px; /* same baseline for all icons */
+  }
+
+  .footer-contact a {
+    line-height: 1.6;
+    word-break: break-word;
+    text-align: left;
+  }
 }

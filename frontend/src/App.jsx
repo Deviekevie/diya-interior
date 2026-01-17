@@ -17,6 +17,7 @@ import GalleryUnit from "./Pages/GalleryUnit";
 import GalleryUpload from "./Admin/GalleryUpload";
 
 // Lazy loaded pages
+const Landing = React.lazy(() => import("./Pages/Landing"));
 const Home = React.lazy(() => import("./Pages/Home"));
 const About = React.lazy(() => import("./Pages/About"));
 const Works = React.lazy(() => import("./Pages/Works"));
@@ -37,7 +38,8 @@ function AnimatedRoutes() {
       <Suspense fallback={<Loading />}>
         <Routes location={location} key={location.pathname}>
           {/* Public Pages */}
-          <Route path="/" element={<Home />} />
+          <Route path="/" element={<Landing />} />
+          <Route path="/home" element={<Home />} />
           <Route path="/works" element={<Works />} />
           <Route path="/about" element={<About />} />
           <Route path="/contact" element={<Contact />} />
